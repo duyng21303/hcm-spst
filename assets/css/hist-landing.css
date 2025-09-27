@@ -1,0 +1,667 @@
+/* ==========================================================================
+   VINTAGE HISTORY LANDING PAGE STYLES
+   Namespace: hist-
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Vietnam Flag & Vintage */
+  --hist-red: #DA251D;
+  --hist-brown: #4B2E21;
+  --hist-yellow: #FFCD00;
+  --hist-parchment: #F3E5C8;
+  --hist-ink: #2B1E16;
+  --hist-paper-light: #F8F1E4;
+  --hist-paper-shadow: rgba(75, 46, 33, 0.15);
+  
+  /* Typography */
+  --hist-font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --hist-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Spacing & Layout */
+  --hist-section-padding: clamp(3rem, 8vw, 6rem);
+  --hist-content-width: min(1200px, 90vw);
+  --hist-border-radius: 8px;
+  
+  /* Effects */
+  --hist-shadow-soft: 0 4px 20px rgba(75, 46, 33, 0.1);
+  --hist-shadow-medium: 0 8px 30px rgba(75, 46, 33, 0.15);
+  --hist-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   ROOT CONTAINER & LAYOUT
+   ========================================================================== */
+
+.hist-root {
+  position: relative;
+  background: var(--hist-parchment);
+  color: var(--hist-ink);
+  font-family: var(--hist-font-sans);
+  line-height: 1.6;
+}
+
+.hist-root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/img/paper-texture.svg');
+  background-size: 200px 200px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hist-container {
+  max-width: var(--hist-content-width);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hist-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--hist-parchment) 0%, var(--hist-paper-light) 100%);
+  overflow: hidden;
+}
+
+.hist-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hist-brown), transparent);
+  opacity: 0.3;
+}
+
+.hist-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+}
+
+.hist-hero-title {
+  font-family: var(--hist-font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--hist-brown);
+  margin: 0 0 1rem;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(75, 46, 33, 0.1);
+}
+
+.hist-hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--hist-ink);
+  margin: 0 0 2rem;
+  opacity: 0.9;
+  max-width: 500px;
+}
+
+.hist-hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hist-flag-container {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.hist-flag-canvas {
+  width: 200px;
+  height: 133px;
+  border: 2px solid var(--hist-brown);
+  border-radius: var(--hist-border-radius);
+  box-shadow: var(--hist-shadow-medium);
+}
+
+.hist-flag-static {
+  width: 200px;
+  height: 133px;
+  border: 2px solid var(--hist-brown);
+  border-radius: var(--hist-border-radius);
+  box-shadow: var(--hist-shadow-medium);
+}
+
+.hist-flag-controls {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.hist-flag-toggle {
+  background: none;
+  border: 1px solid var(--hist-brown);
+  color: var(--hist-brown);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--hist-transition);
+}
+
+.hist-flag-toggle:hover {
+  background: var(--hist-brown);
+  color: var(--hist-parchment);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.hist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border: 2px solid;
+  border-radius: var(--hist-border-radius);
+  font-family: var(--hist-font-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--hist-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.hist-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hist-btn:hover::before {
+  left: 100%;
+}
+
+.hist-btn--primary {
+  background: var(--hist-red);
+  border-color: var(--hist-red);
+  color: white;
+  box-shadow: var(--hist-shadow-soft);
+}
+
+.hist-btn--primary:hover {
+  background: #c41e17;
+  border-color: #c41e17;
+  transform: translateY(-2px);
+  box-shadow: var(--hist-shadow-medium);
+}
+
+.hist-btn--secondary {
+  background: transparent;
+  border-color: var(--hist-brown);
+  color: var(--hist-brown);
+}
+
+.hist-btn--secondary:hover {
+  background: var(--hist-brown);
+  color: var(--hist-parchment);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   TIMELINE SECTION
+   ========================================================================== */
+
+.hist-timeline-section {
+  padding: var(--hist-section-padding) 0;
+  background: var(--hist-paper-light);
+  position: relative;
+}
+
+.hist-timeline-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hist-brown), transparent);
+  opacity: 0.2;
+}
+
+.hist-section-title {
+  font-family: var(--hist-font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--hist-brown);
+  text-align: center;
+  margin: 0 0 3rem;
+  position: relative;
+}
+
+.hist-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--hist-red);
+  border-radius: 2px;
+}
+
+.hist-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hist-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--hist-brown);
+  transform: translateX(-50%);
+  opacity: 0.3;
+}
+
+.hist-timeline-item {
+  position: relative;
+  margin: 3rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--hist-transition);
+}
+
+.hist-timeline-item.hist-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hist-timeline-item:nth-child(even) .hist-timeline-content {
+  margin-left: 50%;
+  padding-left: 2rem;
+}
+
+.hist-timeline-item:nth-child(odd) .hist-timeline-content {
+  margin-right: 50%;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+.hist-timeline-year {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: var(--hist-red);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-family: var(--hist-font-serif);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--hist-shadow-soft);
+  z-index: 2;
+}
+
+.hist-timeline-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--hist-border-radius);
+  box-shadow: var(--hist-shadow-soft);
+  border: 1px solid rgba(75, 46, 33, 0.1);
+}
+
+.hist-timeline-title {
+  font-family: var(--hist-font-serif);
+  font-size: 1.3rem;
+  color: var(--hist-brown);
+  margin: 0 0 0.5rem;
+}
+
+.hist-timeline-text {
+  color: var(--hist-ink);
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   GALLERY SECTION
+   ========================================================================== */
+
+.hist-gallery-section {
+  padding: var(--hist-section-padding) 0;
+  background: var(--hist-parchment);
+}
+
+.hist-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.hist-gallery-item {
+  position: relative;
+  background: white;
+  border-radius: var(--hist-border-radius);
+  overflow: hidden;
+  box-shadow: var(--hist-shadow-soft);
+  transition: var(--hist-transition);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hist-gallery-item.hist-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hist-gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hist-shadow-medium);
+}
+
+.hist-gallery-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: sepia(20%) contrast(1.1);
+  transition: var(--hist-transition);
+}
+
+.hist-gallery-item:hover .hist-gallery-image {
+  transform: scale(1.05);
+  filter: sepia(10%) contrast(1.2);
+}
+
+.hist-gallery-caption {
+  padding: 1.5rem;
+}
+
+.hist-gallery-title {
+  font-family: var(--hist-font-serif);
+  font-size: 1.1rem;
+  color: var(--hist-brown);
+  margin: 0 0 0.5rem;
+  font-variant: small-caps;
+  letter-spacing: 0.5px;
+}
+
+.hist-gallery-text {
+  color: var(--hist-ink);
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   QUOTE SECTION
+   ========================================================================== */
+
+.hist-quote-section {
+  padding: var(--hist-section-padding) 0;
+  background: var(--hist-brown);
+  color: var(--hist-parchment);
+  position: relative;
+}
+
+.hist-quote-section::before,
+.hist-quote-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hist-yellow), transparent);
+}
+
+.hist-quote-section::before { top: 0; }
+.hist-quote-section::after { bottom: 0; }
+
+.hist-quote {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.hist-quote-text {
+  font-family: var(--hist-font-serif);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0 0 1.5rem;
+  position: relative;
+}
+
+.hist-quote-text::before,
+.hist-quote-text::after {
+  content: '"';
+  font-size: 3rem;
+  color: var(--hist-yellow);
+  position: absolute;
+  font-family: Georgia, serif;
+}
+
+.hist-quote-text::before {
+  top: -1rem;
+  left: -2rem;
+}
+
+.hist-quote-text::after {
+  bottom: -2rem;
+  right: -2rem;
+}
+
+.hist-quote-author {
+  font-family: var(--hist-font-serif);
+  font-size: 1.1rem;
+  color: var(--hist-yellow);
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   CTA SECTION
+   ========================================================================== */
+
+.hist-cta-section {
+  padding: var(--hist-section-padding) 0;
+  background: var(--hist-paper-light);
+  text-align: center;
+  position: relative;
+}
+
+.hist-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--hist-brown);
+  opacity: 0.2;
+}
+
+.hist-cta-title {
+  font-family: var(--hist-font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--hist-brown);
+  margin: 0 0 1rem;
+}
+
+.hist-cta-text {
+  font-size: 1.1rem;
+  color: var(--hist-ink);
+  margin: 0 0 2rem;
+  opacity: 0.9;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.hist-footer {
+  background: var(--hist-ink);
+  color: var(--hist-parchment);
+  padding: 3rem 0 2rem;
+}
+
+.hist-footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hist-footer-section h4 {
+  font-family: var(--hist-font-serif);
+  color: var(--hist-yellow);
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.hist-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hist-footer-links li {
+  margin: 0.5rem 0;
+}
+
+.hist-footer-links a {
+  color: var(--hist-parchment);
+  text-decoration: none;
+  transition: var(--hist-transition);
+  opacity: 0.8;
+}
+
+.hist-footer-links a:hover {
+  color: var(--hist-yellow);
+  opacity: 1;
+}
+
+.hist-footer-bottom {
+  border-top: 1px solid rgba(243, 229, 200, 0.2);
+  padding-top: 2rem;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hist-hero-content {
+    max-width: 100%;
+  }
+  
+  .hist-flag-container {
+    position: static;
+    transform: none;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .hist-flag-canvas,
+  .hist-flag-static {
+    width: 150px;
+    height: 100px;
+  }
+  
+  .hist-timeline::before {
+    left: 2rem;
+  }
+  
+  .hist-timeline-item:nth-child(even) .hist-timeline-content,
+  .hist-timeline-item:nth-child(odd) .hist-timeline-content {
+    margin-left: 4rem;
+    margin-right: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: left;
+  }
+  
+  .hist-timeline-year {
+    left: 2rem;
+    transform: translateX(-50%);
+  }
+  
+  .hist-quote-text::before,
+  .hist-quote-text::after {
+    position: static;
+    display: inline;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hist-timeline-item,
+  .hist-gallery-item,
+  .hist-btn,
+  .hist-gallery-image {
+    transition: none;
+  }
+  
+  .hist-timeline-item.hist-visible,
+  .hist-gallery-item.hist-visible {
+    transform: none;
+  }
+  
+  .hist-btn:hover,
+  .hist-gallery-item:hover {
+    transform: none;
+  }
+  
+  .hist-gallery-item:hover .hist-gallery-image {
+    transform: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.hist-btn:focus,
+.hist-flag-toggle:focus,
+.hist-footer-links a:focus {
+  outline: 2px solid var(--hist-yellow);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .hist-root {
+    --hist-paper-shadow: rgba(0, 0, 0, 0.3);
+  }
+  
+  .hist-timeline-content,
+  .hist-gallery-item {
+    border: 2px solid var(--hist-brown);
+  }
+}

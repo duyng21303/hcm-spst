@@ -1,0 +1,9 @@
+<svg width="200" height="133" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="133" fill="#DA251D" rx="4"/>
+  <g transform="translate(100, 66.5)">
+    <path d="M0,-25 L7.3,-7.7 L25,-7.7 L11.8,2.3 L19.1,19.6 L0,9.5 L-19.1,19.6 L-11.8,2.3 L-25,-7.7 L-7.3,-7.7 Z" 
+          fill="#FFCD00" 
+          stroke="#F4D03F" 
+          stroke-width="1"/>
+  </g>
+</svg>

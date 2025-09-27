@@ -5,9 +5,251 @@
     <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hành trình Chủ tịch Hồ Chí Minh</title>
+    <link rel="stylesheet" href="/assets/css/hist-landing.css">
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Vintage History Landing Page Content -->
+    <div class="hist-root">
+      <!-- Hero Section -->
+      <section class="hist-hero">
+        <div class="hist-container">
+          <div class="hist-hero-content">
+            <h1 class="hist-hero-title">Hành Trình Lịch Sử</h1>
+            <p class="hist-hero-subtitle">
+              Khám phá con đường "tìm đường cứu nước" của Chủ tịch Hồ Chí Minh qua bản đồ tương tác và tư liệu lịch sử quý giá.
+            </p>
+            <div class="hist-hero-cta">
+              <a href="#map-section" class="hist-btn hist-btn--primary">
+                Khám Phá Hành Trình
+              </a>
+              <a href="#hist-timeline" class="hist-btn hist-btn--secondary">
+                Xem Dòng Thời Gian
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hist-flag-container">
+          <canvas id="hist-flag-canvas" class="hist-flag-canvas" 
+                  aria-label="Vietnam flag animation" 
+                  role="img"></canvas>
+          <noscript>
+            <img src="/assets/img/vietnam-flag.svg" 
+                 alt="Vietnam flag" 
+                 class="hist-flag-static">
+          </noscript>
+          <div class="hist-flag-controls">
+            <button id="hist-flag-toggle" 
+                    class="hist-flag-toggle" 
+                    aria-pressed="true">
+              Pause
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline Section -->
+      <section id="hist-timeline" class="hist-timeline-section">
+        <div class="hist-container">
+          <h2 class="hist-section-title">Dòng Thời Gian Lịch Sử</h2>
+          
+          <div class="hist-timeline">
+            <article class="hist-timeline-item" data-hist-year="1911">
+              <div class="hist-timeline-year">1911</div>
+              <div class="hist-timeline-content">
+                <h3 class="hist-timeline-title">Khởi Hành Từ Sài Gòn</h3>
+                <p class="hist-timeline-text">
+                  Ngày 5/6/1911, Nguyễn Tất Thành rời Sài Gòn trên tàu Amiral Latouche-Tréville, 
+                  bắt đầu hành trình "tìm đường cứu nước" lịch sử.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-timeline-item" data-hist-year="1917">
+              <div class="hist-timeline-year">1917</div>
+              <div class="hist-timeline-content">
+                <h3 class="hist-timeline-title">Hoạt Động Tại Paris</h3>
+                <p class="hist-timeline-text">
+                  Tham gia phong trào cách mạng tại Pháp, viết bản Yêu sách của nhân dân An Nam 
+                  gửi Hội nghị Versailles năm 1919.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-timeline-item" data-hist-year="1920">
+              <div class="hist-timeline-year">1920</div>
+              <div class="hist-timeline-content">
+                <h3 class="hist-timeline-title">Gia Nhập Đảng Cộng Sản Pháp</h3>
+                <p class="hist-timeline-text">
+                  Trở thành một trong những người sáng lập Đảng Cộng sản Pháp, 
+                  đánh dấu bước ngoặt quan trọng trong tư tưởng cách mạng.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-timeline-item" data-hist-year="1924">
+              <div class="hist-timeline-year">1924</div>
+              <div class="hist-timeline-content">
+                <h3 class="hist-timeline-title">Thành Lập Hội Việt Nam Cách Mạng Thanh Niên</h3>
+                <p class="hist-timeline-text">
+                  Tại Quảng Châu, thành lập tổ chức cách mạng đầu tiên của người Việt Nam, 
+                  đào tạo thế hệ cách mạng trẻ.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-timeline-item" data-hist-year="1930">
+              <div class="hist-timeline-year">1930</div>
+              <div class="hist-timeline-content">
+                <h3 class="hist-timeline-title">Thành Lập Đảng Cộng Sản Việt Nam</h3>
+                <p class="hist-timeline-text">
+                  Tại Hồng Kông, hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam, 
+                  tổ chức lãnh đạo cách mạng thống nhất.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-timeline-item" data-hist-year="1941">
+              <div class="hist-timeline-year">1941</div>
+              <div class="hist-timeline-content">
+                <h3 class="hist-timeline-title">Trở Về Tổ Quốc</h3>
+                <p class="hist-timeline-text">
+                  Sau 30 năm xa quê hương, Người trở về Pác Bó, Cao Bằng, 
+                  kết thúc hành trình "tìm đường cứu nước" và bắt đầu cuộc kháng chiến.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section class="hist-gallery-section">
+        <div class="hist-container">
+          <h2 class="hist-section-title">Thư Viện Hình Ảnh</h2>
+          
+          <div class="hist-gallery">
+            <article class="hist-gallery-item">
+              <img src="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                   alt="Bến Nhà Rồng lịch sử" 
+                   class="hist-gallery-image">
+              <div class="hist-gallery-caption">
+                <h3 class="hist-gallery-title">Bến Nhà Rồng</h3>
+                <p class="hist-gallery-text">
+                  Nơi Chủ tịch Hồ Chí Minh khởi hành tìm đường cứu nước năm 1911.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-gallery-item">
+              <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                   alt="Paris thời kỳ đầu thế kỷ 20" 
+                   class="hist-gallery-image">
+              <div class="hist-gallery-caption">
+                <h3 class="hist-gallery-title">Paris Cách Mạng</h3>
+                <p class="hist-gallery-text">
+                  Thành phố nơi Người hoạt động cách mạng và viết bản Yêu sách lịch sử.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-gallery-item">
+              <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                   alt="Quảng Châu lịch sử" 
+                   class="hist-gallery-image">
+              <div class="hist-gallery-caption">
+                <h3 class="hist-gallery-title">Quảng Châu</h3>
+                <p class="hist-gallery-text">
+                  Nơi thành lập Hội Việt Nam Cách mạng Thanh niên năm 1925.
+                </p>
+              </div>
+            </article>
+
+            <article class="hist-gallery-item">
+              <img src="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                   alt="Pác Bó - Cao Bằng" 
+                   class="hist-gallery-image">
+              <div class="hist-gallery-caption">
+                <h3 class="hist-gallery-title">Pác Bó</h3>
+                <p class="hist-gallery-text">
+                  Điểm kết thúc hành trình và khởi đầu cuộc kháng chiến chống Pháp.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quote Section -->
+      <section class="hist-quote-section">
+        <div class="hist-container">
+          <blockquote class="hist-quote">
+            <p class="hist-quote-text">
+              Không có gì quý hơn độc lập tự do
+            </p>
+            <cite class="hist-quote-author">Chủ tịch Hồ Chí Minh</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="hist-cta-section">
+        <div class="hist-container">
+          <h2 class="hist-cta-title">Khám Phá Thêm</h2>
+          <p class="hist-cta-text">
+            Tìm hiểu sâu hơn về hành trình lịch sử qua bản đồ tương tác và tư liệu quý giá.
+          </p>
+          <a href="#map-section" class="hist-btn hist-btn--primary">
+            Vào Bản Đồ Tương Tác
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="hist-footer">
+        <div class="hist-container">
+          <div class="hist-footer-content">
+            <div class="hist-footer-section">
+              <h4>Khám Phá</h4>
+              <ul class="hist-footer-links">
+                <li><a href="#hero">Trang Chủ</a></li>
+                <li><a href="#hist-timeline">Dòng Thời Gian</a></li>
+                <li><a href="#map-section">Bản Đồ Tương Tác</a></li>
+                <li><a href="#hist-gallery">Thư Viện Ảnh</a></li>
+              </ul>
+            </div>
+            
+            <div class="hist-footer-section">
+              <h4>Tài Nguyên</h4>
+              <ul class="hist-footer-links">
+                <li><a href="#">Tư Liệu Lịch Sử</a></li>
+                <li><a href="#">Bài Viết</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Tải Xuống</a></li>
+              </ul>
+            </div>
+            
+            <div class="hist-footer-section">
+              <h4>Liên Hệ</h4>
+              <ul class="hist-footer-links">
+                <li><a href="#">Về Chúng Tôi</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+                <li><a href="#">Đóng Góp</a></li>
+                <li><a href="#">Hỗ Trợ</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="hist-footer-bottom">
+            <p>&copy; 2025 Hành Trình Lịch Sử. Tất cả quyền được bảo lưu.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
     <script type="module" src="/src/main.jsx"></script>
+    <script defer src="/assets/js/hist-landing.js"></script>
   </body>
 </html>
