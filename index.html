@@ -1,255 +1,434 @@
-<!doctype html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hành trình Chủ tịch Hồ Chí Minh</title>
-    <link rel="stylesheet" href="/assets/css/hist-landing.css">
-  </head>
-  <body>
-    <div id="root"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tapestry of History - Heritage Collection</title>
+    <meta name="description" content="Explore the rich tapestry of history through interactive timelines, key figures, and historical artifacts">
     
-    <!-- Vintage History Landing Page Content -->
-    <div class="hist-root">
-      <!-- Hero Section -->
-      <section class="hist-hero">
-        <div class="hist-container">
-          <div class="hist-hero-content">
-            <h1 class="hist-hero-title">Hành Trình Lịch Sử</h1>
-            <p class="hist-hero-subtitle">
-              Khám phá con đường "tìm đường cứu nước" của Chủ tịch Hồ Chí Minh qua bản đồ tương tác và tư liệu lịch sử quý giá.
-            </p>
-            <div class="hist-hero-cta">
-              <a href="#map-section" class="hist-btn hist-btn--primary">
-                Khám Phá Hành Trình
-              </a>
-              <a href="#hist-timeline" class="hist-btn hist-btn--secondary">
-                Xem Dòng Thời Gian
-              </a>
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Tapestry of History">
+    <meta property="og:description" content="Explore the rich tapestry of history through interactive timelines, key figures, and historical artifacts">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+    
+    <!-- Sticky Navigation -->
+    <nav class="nav-sticky" id="stickyNav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1 class="nav-title">Heritage</h1>
             </div>
-          </div>
-        </div>
-        
-        <div class="hist-flag-container">
-          <canvas id="hist-flag-canvas" class="hist-flag-canvas" 
-                  aria-label="Vietnam flag animation" 
-                  role="img"></canvas>
-          <noscript>
-            <img src="/assets/img/vietnam-flag.svg" 
-                 alt="Vietnam flag" 
-                 class="hist-flag-static">
-          </noscript>
-          <div class="hist-flag-controls">
-            <button id="hist-flag-toggle" 
-                    class="hist-flag-toggle" 
-                    aria-pressed="true">
-              Pause
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#overview" role="menuitem">Overview</a></li>
+                <li role="none"><a href="#timeline" role="menuitem">Timeline</a></li>
+                <li role="none"><a href="#figures" role="menuitem">Key Figures</a></li>
+                <li role="none"><a href="#artifacts" role="menuitem">Artifacts</a></li>
+                <li role="none"><a href="#events" role="menuitem">Events</a></li>
+                <li role="none"><a href="#quotes" role="menuitem">Quotes</a></li>
+                <li role="none"><a href="#gallery" role="menuitem">Gallery</a></li>
+                <li role="none"><a href="#sources" role="menuitem">Sources</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-          </div>
         </div>
-      </section>
+    </nav>
 
-      <!-- Timeline Section -->
-      <section id="hist-timeline" class="hist-timeline-section">
-        <div class="hist-container">
-          <h2 class="hist-section-title">Dòng Thời Gian Lịch Sử</h2>
-          
-          <div class="hist-timeline">
-            <article class="hist-timeline-item" data-hist-year="1911">
-              <div class="hist-timeline-year">1911</div>
-              <div class="hist-timeline-content">
-                <h3 class="hist-timeline-title">Khởi Hành Từ Sài Gòn</h3>
-                <p class="hist-timeline-text">
-                  Ngày 5/6/1911, Nguyễn Tất Thành rời Sài Gòn trên tàu Amiral Latouche-Tréville, 
-                  bắt đầu hành trình "tìm đường cứu nước" lịch sử.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-timeline-item" data-hist-year="1917">
-              <div class="hist-timeline-year">1917</div>
-              <div class="hist-timeline-content">
-                <h3 class="hist-timeline-title">Hoạt Động Tại Paris</h3>
-                <p class="hist-timeline-text">
-                  Tham gia phong trào cách mạng tại Pháp, viết bản Yêu sách của nhân dân An Nam 
-                  gửi Hội nghị Versailles năm 1919.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-timeline-item" data-hist-year="1920">
-              <div class="hist-timeline-year">1920</div>
-              <div class="hist-timeline-content">
-                <h3 class="hist-timeline-title">Gia Nhập Đảng Cộng Sản Pháp</h3>
-                <p class="hist-timeline-text">
-                  Trở thành một trong những người sáng lập Đảng Cộng sản Pháp, 
-                  đánh dấu bước ngoặt quan trọng trong tư tưởng cách mạng.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-timeline-item" data-hist-year="1924">
-              <div class="hist-timeline-year">1924</div>
-              <div class="hist-timeline-content">
-                <h3 class="hist-timeline-title">Thành Lập Hội Việt Nam Cách Mạng Thanh Niên</h3>
-                <p class="hist-timeline-text">
-                  Tại Quảng Châu, thành lập tổ chức cách mạng đầu tiên của người Việt Nam, 
-                  đào tạo thế hệ cách mạng trẻ.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-timeline-item" data-hist-year="1930">
-              <div class="hist-timeline-year">1930</div>
-              <div class="hist-timeline-content">
-                <h3 class="hist-timeline-title">Thành Lập Đảng Cộng Sản Việt Nam</h3>
-                <p class="hist-timeline-text">
-                  Tại Hồng Kông, hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam, 
-                  tổ chức lãnh đạo cách mạng thống nhất.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-timeline-item" data-hist-year="1941">
-              <div class="hist-timeline-year">1941</div>
-              <div class="hist-timeline-content">
-                <h3 class="hist-timeline-title">Trở Về Tổ Quốc</h3>
-                <p class="hist-timeline-text">
-                  Sau 30 năm xa quê hương, Người trở về Pác Bó, Cao Bằng, 
-                  kết thúc hành trình "tìm đường cứu nước" và bắt đầu cuộc kháng chiến.
-                </p>
-              </div>
-            </article>
-          </div>
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-background">
+            <div class="paper-texture" aria-hidden="true"></div>
         </div>
-      </section>
-
-      <!-- Gallery Section -->
-      <section class="hist-gallery-section">
-        <div class="hist-container">
-          <h2 class="hist-section-title">Thư Viện Hình Ảnh</h2>
-          
-          <div class="hist-gallery">
-            <article class="hist-gallery-item">
-              <img src="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                   alt="Bến Nhà Rồng lịch sử" 
-                   class="hist-gallery-image">
-              <div class="hist-gallery-caption">
-                <h3 class="hist-gallery-title">Bến Nhà Rồng</h3>
-                <p class="hist-gallery-text">
-                  Nơi Chủ tịch Hồ Chí Minh khởi hành tìm đường cứu nước năm 1911.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-gallery-item">
-              <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                   alt="Paris thời kỳ đầu thế kỷ 20" 
-                   class="hist-gallery-image">
-              <div class="hist-gallery-caption">
-                <h3 class="hist-gallery-title">Paris Cách Mạng</h3>
-                <p class="hist-gallery-text">
-                  Thành phố nơi Người hoạt động cách mạng và viết bản Yêu sách lịch sử.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-gallery-item">
-              <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                   alt="Quảng Châu lịch sử" 
-                   class="hist-gallery-image">
-              <div class="hist-gallery-caption">
-                <h3 class="hist-gallery-title">Quảng Châu</h3>
-                <p class="hist-gallery-text">
-                  Nơi thành lập Hội Việt Nam Cách mạng Thanh niên năm 1925.
-                </p>
-              </div>
-            </article>
-
-            <article class="hist-gallery-item">
-              <img src="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                   alt="Pác Bó - Cao Bằng" 
-                   class="hist-gallery-image">
-              <div class="hist-gallery-caption">
-                <h3 class="hist-gallery-title">Pác Bó</h3>
-                <p class="hist-gallery-text">
-                  Điểm kết thúc hành trình và khởi đầu cuộc kháng chiến chống Pháp.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Quote Section -->
-      <section class="hist-quote-section">
-        <div class="hist-container">
-          <blockquote class="hist-quote">
-            <p class="hist-quote-text">
-              Không có gì quý hơn độc lập tự do
-            </p>
-            <cite class="hist-quote-author">Chủ tịch Hồ Chí Minh</cite>
-          </blockquote>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="hist-cta-section">
-        <div class="hist-container">
-          <h2 class="hist-cta-title">Khám Phá Thêm</h2>
-          <p class="hist-cta-text">
-            Tìm hiểu sâu hơn về hành trình lịch sử qua bản đồ tương tác và tư liệu quý giá.
-          </p>
-          <a href="#map-section" class="hist-btn hist-btn--primary">
-            Vào Bản Đồ Tương Tác
-          </a>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="hist-footer">
-        <div class="hist-container">
-          <div class="hist-footer-content">
-            <div class="hist-footer-section">
-              <h4>Khám Phá</h4>
-              <ul class="hist-footer-links">
-                <li><a href="#hero">Trang Chủ</a></li>
-                <li><a href="#hist-timeline">Dòng Thời Gian</a></li>
-                <li><a href="#map-section">Bản Đồ Tương Tác</a></li>
-                <li><a href="#hist-gallery">Thư Viện Ảnh</a></li>
-              </ul>
+        <div class="hero-content">
+            <div class="hero-card">
+                <h1 class="hero-title">The Tapestry of History</h1>
+                <p class="hero-subtitle">Discover the interconnected stories that shaped our world through immersive exploration of historical narratives, key figures, and pivotal moments.</p>
+                <div class="hero-cta">
+                    <a href="#timeline" class="btn btn-primary">Explore Timeline</a>
+                    <a href="#figures" class="btn btn-secondary">Key Figures</a>
+                    <a href="#artifacts" class="btn btn-secondary">Artifacts</a>
+                </div>
+                <p class="hero-source">Content sourced from historical archives and research</p>
             </div>
-            
-            <div class="hist-footer-section">
-              <h4>Tài Nguyên</h4>
-              <ul class="hist-footer-links">
-                <li><a href="#">Tư Liệu Lịch Sử</a></li>
-                <li><a href="#">Bài Viết</a></li>
-                <li><a href="#">Video</a></li>
-                <li><a href="#">Tải Xuống</a></li>
-              </ul>
-            </div>
-            
-            <div class="hist-footer-section">
-              <h4>Liên Hệ</h4>
-              <ul class="hist-footer-links">
-                <li><a href="#">Về Chúng Tôi</a></li>
-                <li><a href="#">Liên Hệ</a></li>
-                <li><a href="#">Đóng Góp</a></li>
-                <li><a href="#">Hỗ Trợ</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="hist-footer-bottom">
-            <p>&copy; 2025 Hành Trình Lịch Sử. Tất cả quyền được bảo lưu.</p>
-          </div>
         </div>
-      </footer>
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Table of Contents -->
+        <section class="toc" id="toc">
+            <div class="container">
+                <h2 class="toc-title">Table of Contents</h2>
+                <nav class="toc-nav" aria-label="Page contents">
+                    <ul class="toc-list">
+                        <li><a href="#overview">Historical Overview</a></li>
+                        <li><a href="#timeline">Interactive Timeline</a></li>
+                        <li><a href="#figures">Key Historical Figures</a></li>
+                        <li><a href="#artifacts">Artifacts & Places</a></li>
+                        <li><a href="#events">Chronicle of Events</a></li>
+                        <li><a href="#quotes">Historical Quotes</a></li>
+                        <li><a href="#gallery">Image Gallery</a></li>
+                        <li><a href="#sources">Sources & Citations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview" id="overview">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Historical Overview</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="overview-content">
+                    <div class="overview-text">
+                        <p class="overview-intro">History is the continuous narrative of human civilization, marked by pivotal moments, extraordinary individuals, and transformative events that have shaped our collective experience.</p>
+                        <p>Through careful examination of primary sources, archaeological evidence, and scholarly research, we can trace the complex web of cause and effect that connects past to present.</p>
+                    </div>
+                    <div class="overview-facts">
+                        <div class="fact-chip">
+                            <span class="fact-label">Periods Covered</span>
+                            <span class="fact-value">Ancient to Modern</span>
+                        </div>
+                        <div class="fact-chip">
+                            <span class="fact-label">Key Figures</span>
+                            <span class="fact-value">50+ Profiles</span>
+                        </div>
+                        <div class="fact-chip">
+                            <span class="fact-label">Artifacts</span>
+                            <span class="fact-value">100+ Items</span>
+                        </div>
+                        <div class="fact-chip">
+                            <span class="fact-label">Timeline Span</span>
+                            <span class="fact-value">5000+ Years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Timeline -->
+        <section class="timeline-section" id="timeline">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Interactive Timeline</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-progress" id="timelineProgress" aria-hidden="true"></div>
+                    <div class="timeline">
+                        <div class="timeline-item" data-year="3000 BCE">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Ancient Civilizations</h3>
+                                <p class="timeline-date">c. 3000 BCE</p>
+                                <p class="timeline-description">The emergence of the first complex civilizations in Mesopotamia, Egypt, and the Indus Valley marked the beginning of recorded history.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="800 BCE">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Classical Antiquity</h3>
+                                <p class="timeline-date">c. 800 BCE - 500 CE</p>
+                                <p class="timeline-description">The rise of Greek city-states and the Roman Empire established foundations of Western civilization, philosophy, and governance.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="1000 CE">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Medieval Period</h3>
+                                <p class="timeline-date">c. 500 - 1500 CE</p>
+                                <p class="timeline-description">The Middle Ages saw the rise of feudalism, the spread of major religions, and significant cultural and technological developments.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="1500 CE">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Renaissance & Exploration</h3>
+                                <p class="timeline-date">c. 1400 - 1600 CE</p>
+                                <p class="timeline-description">A period of cultural rebirth, scientific revolution, and global exploration that transformed European society and connected distant continents.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Figures -->
+        <section class="figures" id="figures">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Key Historical Figures</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="figures-grid">
+                    <article class="figure-card" tabindex="0">
+                        <div class="figure-image">
+                            <img src="https://images.pexels.com/photos/8111357/pexels-photo-8111357.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Historical portrait" loading="lazy">
+                        </div>
+                        <div class="figure-content">
+                            <h3 class="figure-name">Alexander the Great</h3>
+                            <p class="figure-dates">356 - 323 BCE</p>
+                            <p class="figure-quote">"I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion."</p>
+                        </div>
+                    </article>
+                    <article class="figure-card" tabindex="0">
+                        <div class="figure-image">
+                            <img src="https://images.pexels.com/photos/8111348/pexels-photo-8111348.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Historical portrait" loading="lazy">
+                        </div>
+                        <div class="figure-content">
+                            <h3 class="figure-name">Cleopatra VII</h3>
+                            <p class="figure-dates">69 - 30 BCE</p>
+                            <p class="figure-quote">"I will not be triumphed over."</p>
+                        </div>
+                    </article>
+                    <article class="figure-card" tabindex="0">
+                        <div class="figure-image">
+                            <img src="https://images.pexels.com/photos/8111355/pexels-photo-8111355.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Historical portrait" loading="lazy">
+                        </div>
+                        <div class="figure-content">
+                            <h3 class="figure-name">Leonardo da Vinci</h3>
+                            <p class="figure-dates">1452 - 1519 CE</p>
+                            <p class="figure-quote">"Learning never exhausts the mind."</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifacts & Places -->
+        <section class="artifacts" id="artifacts">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Artifacts & Places</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="artifacts-content">
+                    <article class="artifact-item artifact-left">
+                        <div class="artifact-image">
+                            <img src="https://images.pexels.com/photos/8111364/pexels-photo-8111364.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ancient artifact" loading="lazy">
+                        </div>
+                        <div class="artifact-text">
+                            <h3 class="artifact-title">The Rosetta Stone</h3>
+                            <p class="artifact-date">196 BCE</p>
+                            <p class="artifact-description">This granodiorite stele was the key to deciphering Egyptian hieroglyphs, unlocking thousands of years of ancient Egyptian history and culture.</p>
+                            <p class="artifact-provenance">Discovered in 1799 near the town of Rosetta, Egypt</p>
+                        </div>
+                    </article>
+                    <article class="artifact-item artifact-right">
+                        <div class="artifact-image">
+                            <img src="https://images.pexels.com/photos/8111362/pexels-photo-8111362.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Historical site" loading="lazy">
+                        </div>
+                        <div class="artifact-text">
+                            <h3 class="artifact-title">The Colosseum</h3>
+                            <p class="artifact-date">72-80 CE</p>
+                            <p class="artifact-description">The largest amphitheater ever built, this iconic structure hosted gladiatorial contests and public spectacles for over 400 years.</p>
+                            <p class="artifact-provenance">Rome, Italy - UNESCO World Heritage Site</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Chronicle -->
+        <section class="events" id="events">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Chronicle of Events</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="events-carousel" id="eventsCarousel">
+                    <div class="events-track">
+                        <div class="event-slide">
+                            <h3 class="event-title">The Fall of Rome</h3>
+                            <p class="event-date">476 CE</p>
+                            <p class="event-summary">The deposition of Romulus Augustulus marked the end of the Western Roman Empire and the beginning of the Middle Ages in Europe.</p>
+                            <a href="#timeline" class="event-link">View in Timeline</a>
+                        </div>
+                        <div class="event-slide">
+                            <h3 class="event-title">The Printing Press</h3>
+                            <p class="event-date">c. 1440 CE</p>
+                            <p class="event-summary">Johannes Gutenberg's invention revolutionized the spread of knowledge and marked the beginning of the Information Age.</p>
+                            <a href="#timeline" class="event-link">View in Timeline</a>
+                        </div>
+                        <div class="event-slide">
+                            <h3 class="event-title">Discovery of the Americas</h3>
+                            <p class="event-date">1492 CE</p>
+                            <p class="event-summary">Christopher Columbus's voyage connected the Old and New Worlds, initiating an era of exploration and cultural exchange.</p>
+                            <a href="#timeline" class="event-link">View in Timeline</a>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn carousel-prev" aria-label="Previous event">‹</button>
+                        <button class="carousel-btn carousel-next" aria-label="Next event">›</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quotes Carousel -->
+        <section class="quotes" id="quotes">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Words from History</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="quotes-carousel" id="quotesCarousel">
+                    <div class="quote-slide active">
+                        <blockquote class="quote-text">
+                            "The only thing we have to fear is fear itself."
+                        </blockquote>
+                        <cite class="quote-author">Franklin D. Roosevelt</cite>
+                        <p class="quote-context">First Inaugural Address, 1933</p>
+                    </div>
+                    <div class="quote-slide">
+                        <blockquote class="quote-text">
+                            "I have a dream that one day this nation will rise up and live out the true meaning of its creed."
+                        </blockquote>
+                        <cite class="quote-author">Martin Luther King Jr.</cite>
+                        <p class="quote-context">March on Washington, 1963</p>
+                    </div>
+                    <div class="quote-slide">
+                        <blockquote class="quote-text">
+                            "That's one small step for man, one giant leap for mankind."
+                        </blockquote>
+                        <cite class="quote-author">Neil Armstrong</cite>
+                        <p class="quote-context">Moon Landing, 1969</p>
+                    </div>
+                    <div class="quotes-controls">
+                        <button class="quote-control" id="quotePause" aria-label="Pause quotes">⏸</button>
+                        <div class="quote-indicators">
+                            <button class="quote-dot active" data-slide="0" aria-label="Quote 1"></button>
+                            <button class="quote-dot" data-slide="1" aria-label="Quote 2"></button>
+                            <button class="quote-dot" data-slide="2" aria-label="Quote 3"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Historical Gallery</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" tabindex="0">
+                        <img src="https://images.pexels.com/photos/8111370/pexels-photo-8111370.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ancient architecture" loading="lazy">
+                        <div class="gallery-caption">Ancient Roman Architecture</div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <img src="https://images.pexels.com/photos/8111368/pexels-photo-8111368.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Medieval manuscript" loading="lazy">
+                        <div class="gallery-caption">Medieval Illuminated Manuscript</div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <img src="https://images.pexels.com/photos/8111366/pexels-photo-8111366.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Renaissance art" loading="lazy">
+                        <div class="gallery-caption">Renaissance Masterpiece</div>
+                    </div>
+                    <div class="gallery-item" tabindex="0">
+                        <img src="https://images.pexels.com/photos/8111365/pexels-photo-8111365.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ancient pottery" loading="lazy">
+                        <div class="gallery-caption">Ancient Ceramic Vessel</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sources & Citations -->
+        <section class="sources" id="sources">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Sources & Citations</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                </div>
+                <div class="sources-content">
+                    <details class="source-category">
+                        <summary class="source-title">Primary Sources</summary>
+                        <ul class="source-list">
+                            <li>Ancient texts and inscriptions from archaeological sites</li>
+                            <li>Original manuscripts and documents from historical archives</li>
+                            <li>Contemporary accounts and eyewitness testimonies</li>
+                        </ul>
+                    </details>
+                    <details class="source-category">
+                        <summary class="source-title">Academic References</summary>
+                        <ul class="source-list">
+                            <li>Peer-reviewed historical journals and publications</li>
+                            <li>University research databases and digital collections</li>
+                            <li>Museum catalogs and curatorial research</li>
+                        </ul>
+                    </details>
+                    <details class="source-category">
+                        <summary class="source-title">Digital Archives</summary>
+                        <ul class="source-list">
+                            <li>National and international digital heritage collections</li>
+                            <li>Digitized historical photographs and documents</li>
+                            <li>Online museum collections and virtual exhibitions</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Heritage</h3>
+                    <p class="footer-description">Preserving and sharing the rich tapestry of human history through digital storytelling and interactive exploration.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#figures">Key Figures</a></li>
+                        <li><a href="#artifacts">Artifacts</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#sources">Sources</a></li>
+                        <li><a href="#" aria-label="Educational materials">Education</a></li>
+                        <li><a href="#" aria-label="Research tools">Research</a></li>
+                        <li><a href="#" aria-label="Contact information">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Heritage Historical Collection. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+            <img class="lightbox-image" id="lightboxImage" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
     </div>
-    
-    <script type="module" src="/src/main.jsx"></script>
-    <script defer src="/assets/js/hist-landing.js"></script>
-  </body>
+
+    <script src="script.js"></script>
+</body>
 </html>
